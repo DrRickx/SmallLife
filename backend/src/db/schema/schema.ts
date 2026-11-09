@@ -39,6 +39,7 @@ export const users = pgTable.withRLS("users", {
     .primaryKey()
     .$defaultFn(() => uuidv7()),
   username: varchar("username", { length: 255 }).notNull().unique(),
+  email: varchar("email", { length: 255 }).notNull().unique(),
   password: varchar("password", { length: 255 }).notNull(),
   role: roleEnum().default("sales").notNull(),
   tokenVersion: integer("token_version").notNull().default(0), // bump = kill all access tokens

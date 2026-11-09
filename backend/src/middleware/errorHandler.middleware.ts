@@ -14,8 +14,10 @@ export function errorHandler(
       issues: err.issues.map((i) => ({ path: i.path, message: i.message })),
     });
   }
-  if (err instanceof AppError)
-    return res.status(Number(err.status)).json({ error: err.message });
-  console.error(err); // never send internals to the client
-  res.status(500).json({ error: "Internal server error" });
+  if (err instanceof AppError) {
+    return res.status(err.statusCode).json({
+      error: err.message,
+      code: err.code,
+    });
+  }
 }
