@@ -55,7 +55,7 @@ export type User = typeof users.$inferSelect;
 export type NewUser = typeof users.$inferInsert;
 export type Role = User["role"];
 
-export const sessions = pgTable("sessions", {
+export const sessions = pgTable.withRLS("sessions", {
   id: uuid("id").primaryKey().defaultRandom(),
   userId: uuid("user_id")
     .notNull()
@@ -69,7 +69,7 @@ export const sessions = pgTable("sessions", {
   revokedAt: timestamp("revoked_at"),
 });
 
-export const passwordResets = pgTable("password_resets", {
+export const passwordResets = pgTable.withRLS("password_resets", {
   id: uuid("id").primaryKey().defaultRandom(),
   userId: uuid("user_id")
     .notNull()

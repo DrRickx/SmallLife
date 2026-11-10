@@ -1,0 +1,59 @@
+{
+  "type": "diff",
+  "version": "9",
+  "dialect": "postgres",
+  "id": "2f462ff5-d45e-40ab-82b8-37874144e529",
+  "prevIds": [
+    "99f5830d-19d1-4f26-8d05-6d8a6a837489"
+  ],
+  "footprints": [
+    {
+      "statementType": "alter_rls",
+      "statementTarget": [
+        "table",
+        "public",
+        "password_resets"
+      ],
+      "writes": [
+        "s|rls|public.password_resets"
+      ],
+      "reads": [
+        "n|tbl|public.password_resets",
+        "n|sch|public"
+      ],
+      "sqlHash": "933d3111b98f75cb"
+    },
+    {
+      "statementType": "alter_rls",
+      "statementTarget": [
+        "table",
+        "public",
+        "sessions"
+      ],
+      "writes": [
+        "s|rls|public.sessions"
+      ],
+      "reads": [
+        "n|tbl|public.sessions",
+        "n|sch|public"
+      ],
+      "sqlHash": "251a8f1c4447fa90"
+    }
+  ],
+  "deltas": [
+    {
+      "op": "alter",
+      "key": "tables\u0000[\"public\",\"password_resets\"]",
+      "set": {
+        "isRlsEnabled": true
+      }
+    },
+    {
+      "op": "alter",
+      "key": "tables\u0000[\"public\",\"sessions\"]",
+      "set": {
+        "isRlsEnabled": true
+      }
+    }
+  ]
+}
