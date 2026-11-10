@@ -99,6 +99,7 @@ export const products = pgTable.withRLS("products", {
     .$defaultFn(() => uuidv7()),
   sku: varchar("sku", { length: 12 }).notNull().unique(),
   barcode: varchar("barcode", { length: 13 }).unique(),
+  name: varchar("name"),
   categoryId: uuid("category_id")
     .notNull()
     .references(() => categories.id, { onDelete: "cascade" }),

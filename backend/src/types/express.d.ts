@@ -2,6 +2,7 @@ import { roleEnum } from "../db/schema/schema";
 
 export interface AuthUser {
   id: string;
+  email: string;
   role: roleEnum;
 }
 

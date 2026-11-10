@@ -58,6 +58,7 @@ export class AuthService {
     const [user] = await db
       .select({
         id: users.id,
+        email: users.email,
         role: users.role,
         tokenVersion: users.tokenVersion,
       })

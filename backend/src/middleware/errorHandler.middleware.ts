@@ -15,9 +15,12 @@ export function errorHandler(
     });
   }
   if (err instanceof AppError) {
+    if (err.statusCode >= 500) console.error(err);
     return res.status(err.statusCode).json({
       error: err.message,
       code: err.code,
     });
   }
+  console.error("Unhandled request error:", err);
+  return res.status(500).json({ error: "Internal server error" });
 }

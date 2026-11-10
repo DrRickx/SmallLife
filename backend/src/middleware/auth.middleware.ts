@@ -22,7 +22,7 @@ export const requireAuth = catchAsync(
     if (!user || user.tokenVersion !== payload.tv)
       throw new AppError("Token revoked", 401, "TOKEN_REVOKED");
 
-    req.user = { id: user.id, role: user.role }; // role comes from the DB, not the token
+    req.user = { id: user.id, email: user.email, role: user.role }; // role comes from the DB, not the token
     next();
   },
 );
